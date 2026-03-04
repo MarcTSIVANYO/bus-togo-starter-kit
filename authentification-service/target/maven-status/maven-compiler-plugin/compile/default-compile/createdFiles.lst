@@ -1,0 +1,10 @@
+tg/togo/auth/dto/DtosAuth$DemandeConnexion.class
+tg/togo/auth/dto/DtosAuth$DemandeInscription.class
+tg/togo/auth/dto/DtosAuth$ReponseToken.class
+tg/togo/auth/AuthentificationServiceApplication.class
+tg/togo/auth/securite/ServiceJwt.class
+tg/togo/auth/service/StockageUtilisateurs.class
+tg/togo/auth/controleur/ControleurAuthentification.class
+tg/togo/auth/dto/DtosAuth.class
+tg/togo/auth/securite/ConfigurationSecurite.class
+tg/togo/auth/service/StockageUtilisateurs$Utilisateur.class

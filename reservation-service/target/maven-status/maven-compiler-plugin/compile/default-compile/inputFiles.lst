@@ -1,0 +1,9 @@
+/Users/marctsivanyo/Downloads/lome-kara-togo-starter-kit/reservation-service/src/main/java/tg/togo/reservation/controleur/ControleurReservation.java
+/Users/marctsivanyo/Downloads/lome-kara-togo-starter-kit/reservation-service/src/main/java/tg/togo/reservation/securite/LecteurJwtSimple.java
+/Users/marctsivanyo/Downloads/lome-kara-togo-starter-kit/reservation-service/src/main/java/tg/togo/reservation/modele/Trajet.java
+/Users/marctsivanyo/Downloads/lome-kara-togo-starter-kit/reservation-service/src/main/java/tg/togo/reservation/ReservationServiceApplication.java
+/Users/marctsivanyo/Downloads/lome-kara-togo-starter-kit/reservation-service/src/main/java/tg/togo/reservation/service/ServiceReservation.java
+/Users/marctsivanyo/Downloads/lome-kara-togo-starter-kit/reservation-service/src/main/java/tg/togo/reservation/modele/Reservation.java
+/Users/marctsivanyo/Downloads/lome-kara-togo-starter-kit/reservation-service/src/main/java/tg/togo/reservation/repository/TrajetRepository.java
+/Users/marctsivanyo/Downloads/lome-kara-togo-starter-kit/reservation-service/src/main/java/tg/togo/reservation/repository/ReservationRepository.java
+/Users/marctsivanyo/Downloads/lome-kara-togo-starter-kit/reservation-service/src/main/java/tg/togo/reservation/controleur/ControleurTrajet.java

@@ -1,0 +1,40 @@
+version: "3.9"
+services:
+  auth:
+    image: eclipse-temurin:17-jdk
+    working_dir: /app
+    volumes:
+      - ./authentification-service:/app
+    command: bash -lc "mvn -q spring-boot:run"
+    ports:
+      - "8081:8081"
+
+  reservation:
+    image: eclipse-temurin:17-jdk
+    working_dir: /app
+    volumes:
+      - ./reservation-service:/app
+    command: bash -lc "mvn -q spring-boot:run"
+    ports:
+      - "8082:8082"
+
+  notification:
+    image: eclipse-temurin:17-jdk
+    working_dir: /app
+    volumes:
+      - ./notification-service:/app
+    command: bash -lc "mvn -q spring-boot:run"
+    ports:
+      - "8084:8084"
+
+  paiement:
+    image: eclipse-temurin:17-jdk
+    working_dir: /app
+    volumes:
+      - ./paiement-service:/app
+    command: bash -lc "mvn -q spring-boot:run"
+    ports:
+      - "8083:8083"
+    depends_on:
+      - reservation
+      - notification

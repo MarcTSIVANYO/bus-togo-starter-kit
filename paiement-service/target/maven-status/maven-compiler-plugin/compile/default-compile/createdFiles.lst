@@ -1,0 +1,10 @@
+tg/togo/paiement/modele/Paiement.class
+tg/togo/paiement/repository/PaiementRepository.class
+tg/togo/paiement/dto/DtosPaiement$ReponsePaiement.class
+tg/togo/paiement/controleur/ControleurPaiement.class
+tg/togo/paiement/PaiementServiceApplication.class
+tg/togo/paiement/service/ServicePaiement.class
+tg/togo/paiement/dto/DtosPaiement$DemandePaiement.class
+tg/togo/paiement/client/ClientsHttp.class
+tg/togo/paiement/dto/DtosPaiement.class
+tg/togo/paiement/service/ServicePaiement$DemandeNotification.class

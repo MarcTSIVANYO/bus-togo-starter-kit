@@ -1,0 +1,202 @@
+{
+  "info": {
+    "name": "TP Réservation Bus (Togo) — Microservices",
+    "_postman_id": "1dc01e10eff98cc8bbdb6cb4479c4e11",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentification - Inscription",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseAuth}}/api/auth/inscription",
+          "host": [
+            "{{baseAuth}}"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "inscription"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"etudiant1@univ.tg\",\n  \"motDePasse\": \"pass123\",\n  \"nomComplet\": \"Etudiant 1\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Authentification - Connexion (récupère token)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const json = pm.response.json();",
+              "pm.environment.set('token', json.token);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseAuth}}/api/auth/connexion",
+          "host": [
+            "{{baseAuth}}"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "connexion"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"etudiant1@univ.tg\",\n  \"motDePasse\": \"pass123\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Réservation - Créer trajet",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const json = pm.response.json();",
+              "pm.environment.set('trajetId', json.id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseRes}}/api/trajets",
+          "host": [
+            "{{baseRes}}"
+          ],
+          "path": [
+            "api",
+            "trajets"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"villeDepart\": \"Lome\",\n  \"villeArrivee\": \"Kara\",\n  \"dateDepart\": \"2026-03-12 06:30\",\n  \"nombreSiegesTotal\": 40,\n  \"prixFcfa\": 6000\n}"
+        }
+      }
+    },
+    {
+      "name": "Réservation - Lister trajets",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseRes}}/api/trajets",
+          "host": [
+            "{{baseRes}}"
+          ],
+          "path": [
+            "api",
+            "trajets"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Réservation - Créer réservation (PENDING + idempotence)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const json = pm.response.json();",
+              "pm.environment.set('reservationId', json.id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "demo-abc-123"
+          }
+        ],
+        "url": {
+          "raw": "{{baseRes}}/api/reservations",
+          "host": [
+            "{{baseRes}}"
+          ],
+          "path": [
+            "api",
+            "reservations"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"trajetId\": \"{{trajetId}}\",\n  \"numeroSiege\": 12\n}"
+        }
+      }
+    },
+    {
+      "name": "Paiement - Payer (Saga)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{basePay}}/api/paiements/payer",
+          "host": [
+            "{{basePay}}"
+          ],
+          "path": [
+            "api",
+            "paiements",
+            "payer"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reservationId\": \"{{reservationId}}\",\n  \"montant\": 6000,\n  \"methode\": \"MOMO\"\n}"
+        }
+      }
+    }
+  ]
+}

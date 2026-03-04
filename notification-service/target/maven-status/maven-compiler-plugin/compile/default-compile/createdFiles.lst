@@ -1,0 +1,6 @@
+tg/togo/notification/controleur/ControleurNotification.class
+tg/togo/notification/repository/NotificationRepository.class
+tg/togo/notification/service/ServiceNotification.class
+tg/togo/notification/modele/Notification.class
+tg/togo/notification/controleur/ControleurNotification$DemandeNotification.class
+tg/togo/notification/NotificationServiceApplication.class
